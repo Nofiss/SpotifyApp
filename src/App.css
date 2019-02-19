@@ -1,0 +1,117 @@
+.container{
+    margin: 1%;
+    max-width: initial !important;
+}
+
+.containerUser {
+    display: flex;
+    flex-direction: row;
+    margin: 3% 5% 5% 20%;
+}
+
+.containerImage {
+    width: 40%;
+}
+
+.info {
+    font-size: 250%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 0 0 3%;
+}
+
+.name {
+    font-weight: bold;
+    color: #ff0030
+}
+
+.country {
+    font-style: italic;
+}
+
+.email {
+    text-decoration: underline;
+}
+
+.topTrack {
+    background-color: #9098a8;
+    height: 100px;
+    font-size: 30px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2% 0 2%;
+    border-bottom: 3px solid black;
+}
+
+.topAlbum {
+    background-color: #9098a8;
+    height: 100px;
+    font-size: 30px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2% 0 2%;
+    border-bottom: 3px solid black;
+}
+
+button {
+    width: 5%;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.tracks {
+    display: flex;
+    flex-direction: column;
+}
+
+.track {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid #349c99;
+    padding: 1%;
+}
+
+a {
+    text-decoration: none;
+    color: #c84b08;
+    font-weight: bold;
+}
+
+.album {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #ff177e;
+    padding: 1%;
+    font-weight: bold;
+    color: #6e13ff;
+}
+
+.img {
+    display: flex;
+    flex-direction: row;
+}
+
+.albumName {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin: 0 0 0 2%;
+}
+
+.btn-primary {
+    height: 45px;
+}
+
+.space {
+    width: 25%;
+    text-align: center;
+}
