@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import gql from "graphql-tag";
+
 export default class Utente extends Component {
     render() {
         return (
@@ -17,7 +18,8 @@ export default class Utente extends Component {
                     }
                 }
             `}>
-                {({ loading, error, data }) => (
+                {({ loading, error, data }) => {
+                    return(
                     <div className="utenti">
                         {loading &&
                             <p>caricamento...</p>}
@@ -25,7 +27,7 @@ export default class Utente extends Component {
                             <div id="{data.me.id}" className="containerUser">
                                 <div className="containerImage">
                                     <div className="image">{/*data.me.images.url*/}</div>
-                                    <img src="https://leganerd.com/wp-content/uploads/2018/04/earthhead-999x624.jpg" alt="img" style={{ width: "80%", display: "block", marginLeft: "auto", marginRight: "auto" }} />
+                                    <img src={data.me.images[0].url} alt="img" style={{ width: "80%", display: "block", marginLeft: "auto", marginRight: "auto" }} />
                                 </div>
                                 <div className="info">
                                     <div className="name">Name: {data.me.display_name}</div>
@@ -35,6 +37,7 @@ export default class Utente extends Component {
                             </div>}
                     </div>
                 )}
+                }
             </Query>
         )
     }

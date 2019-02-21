@@ -5,10 +5,10 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
 import { onError } from 'apollo-link-error';
 import { ApolloClient } from 'apollo-client';
-import Utente from './component/Utente';
-import Album from './component/Album';
-import Tracks from './component/Tracks';
-import { Collapse, Button } from 'reactstrap';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Menu from './components/Menu';
+import Home from './components/Home';
+import Artista from './components/Artista';
 
 const authAfterware = new onError(({ graphQLErrors }) => {
   if (graphQLErrors) {
@@ -29,47 +29,16 @@ const client = new ApolloClient({
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.toggleTracks = this.toggleTracks.bind(this);
-    this.toggleAlbum = this.toggleAlbum.bind(this);
-    this.state = { 
-      collapseTrack: false,
-      collapseAlbum: false 
-    };
-  }
-
-  toggleTracks() {
-    this.setState({ collapseTrack: !this.state.collapseTrack });
-  }
-
-  toggleAlbum() {
-    this.setState({ collapseAlbum: !this.state.collapseAlbum });
-  }
-
   render() {
     return (
       <ApolloProvider client={client}>
-        <Utente />
-
-        <div className="topTrack">
-          <div>Top Tracks ( Name, Artist, Album, Popularity )</div>
-          <Button color="primary" onClick={this.toggleTracks}>Open</Button>
-        </div>
-        
-        <Collapse isOpen={this.state.collapseTrack}>
-          <Tracks />
-        </Collapse>
-
-        <div className="topAlbum">
-          <div>Top Album ( Name, Artist, Popularity )</div>
-          <Button color="primary" onClick={this.toggleAlbum}>Open</Button>
-        </div>
-        
-        <Collapse isOpen={this.state.collapseAlbum}>
-          <Album />
-        </Collapse>
-
+        <Router>
+          <div>
+            <Menu />
+            <Route exact path={`/`} component={Home} />
+            <Route path={`/:topId`} component={Artista}/>
+          </div>
+        </Router>
       </ApolloProvider>
     );
   }

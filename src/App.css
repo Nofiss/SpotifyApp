@@ -73,18 +73,13 @@ button {
 .track {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     border: 2px solid #349c99;
     padding: 1%;
 }
 
-a {
-    text-decoration: none;
-    color: #c84b08;
-    font-weight: bold;
-}
-
-.album {
+.artist {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -93,6 +88,8 @@ a {
     padding: 1%;
     font-weight: bold;
     color: #6e13ff;
+    height: 150px;
+    font-size: 35px;
 }
 
 .img {
@@ -114,4 +111,54 @@ a {
 .space {
     width: 25%;
     text-align: center;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.rowLink {
+    width: 25%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    color: #007bff;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #f9991f !important;
+    text-decoration: none !important;
+}
+
+.artista {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-size: 70px;
+    font-weight: bold;
+    color: #ff0c00;
+    margin: 4%;
+}
+
+.artista > div {
+    padding: 2%
+}
+
+.artistaAlbums{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.artistaAlbum {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2%;
+    padding: 1%;
+    font-size: 30px;
+    font-weight: bold;
+    width: 500px;
+    height: 400px;
 }
