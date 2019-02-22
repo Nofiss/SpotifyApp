@@ -4,6 +4,7 @@ import gql from "graphql-tag";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Link } from "react-router-dom";
 
 library.add(faPlay)
 
@@ -25,28 +26,32 @@ const shortEnglishHumanizer = humanizeDuration.humanizer({
 
 shortEnglishHumanizer(15600000)
 
-export default class Tracks extends Component {
+export default class TracksAlbum extends Component {
     render() {
+        const id = this.props.match.params.topicId
         return (
             <Query query={gql`
-                query myTrack{
-                    me{
-                        top_tracks{
+                query myAlbumTracks($id: String!){
+                    album(id: $id){
+                        name
+                        id
+                        images{
+                          url
+                        }
+                        artists{
+                            id
+                        }
+                        tracks {
                             name
                             uri
-                            id
+                          id
                             preview_url
-                            duration_ms
-                            artists{
-                                name
-                            }
-                            album{
-                                name
-                            }      
+                          duration_ms
                         }
                     }
                 }
             `}
+                variables={{ id: id }}
                 fetchPolicy='no-cache'
             >
                 {({ loading, error, data }) => {
@@ -56,7 +61,13 @@ export default class Tracks extends Component {
                                 <p>caricamento...</p>}
                             {!loading && !error &&
                                 <div>
-                                    {data.me.top_tracks.map((item, idx) => {
+                                    <div className="artista">
+                                        <Link to={'/artist/' + data.album.artists[0].id}>
+                                            <img src={data.album.images[1].url} alt="album" style={{ width: "300px" }} />
+                                        </Link>
+                                        <div>{data.album.name}</div>
+                                    </div>
+                                    {data.album.tracks.map((item, idx) => {
                                         return (
                                             <div className="container" id={item.id} >
                                                 <div className="tracks">
@@ -70,12 +81,6 @@ export default class Tracks extends Component {
                                                         <a href={item.uri} className="rowLink">
                                                             <div>{item.name}</div>
                                                         </a>
-                                                        <div className="space">
-                                                            <div>{item.artists[0].name}</div>
-                                                        </div>
-                                                        <div className="space">
-                                                            <div>{item.album.name}</div>
-                                                        </div>
                                                         <div className="space">
                                                             {item.preview_url === null ?
                                                                 <FontAwesomeIcon icon={faTimes} style={{ width: "20px" }} />
@@ -91,7 +96,8 @@ export default class Tracks extends Component {
                                         )
                                     })
                                     }
-                                </div>}
+                                </div>
+                            }
                         </div>
                     )
                 }}

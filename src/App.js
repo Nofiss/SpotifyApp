@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Menu from './components/Menu';
 import Home from './components/Home';
 import Artista from './components/Artista';
+import TracksAlbum from './components/TracksAlbum';
 
 const authAfterware = new onError(({ graphQLErrors }) => {
   if (graphQLErrors) {
@@ -36,7 +37,8 @@ class App extends Component {
           <div>
             <Menu />
             <Route exact path={`/`} component={Home} />
-            <Route path={`/:topId`} component={Artista}/>
+            <Route path={`/artist/:topId`} component={Artista}/>
+            <Route path={`/album/:topicId`} component={TracksAlbum} />
           </div>
         </Router>
       </ApolloProvider>

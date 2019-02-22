@@ -32,7 +32,7 @@ export default class Album extends Component {
                             {data.me.artists.map((item) => {
                                 return(
                                     <div className="container" id={item.id}>
-                                        <Link to={"/" + item.id}>          
+                                        <Link to={"artist/" + item.id}>          
                                             <div className="artist">
                                                 <img src={item.images[2].url} alt="fotoProfilo" style={{ width: "100px" }} />
                                                 <div>{item.name}</div>
