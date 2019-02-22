@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import gql from "graphql-tag";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Artista from './Artista';
+import { Link } from "react-router-dom";
 
 export default class Album extends Component {
     render() {

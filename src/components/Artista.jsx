@@ -46,7 +46,7 @@ export default class Artista extends Component {
                                     return(
                                         <div id={item.id} className="artistaAlbum">
                                             <img src={item.images[1].url} alt="album" style={{ width: "200px"}} />
-                                            <div>{item.name}</div>
+                                            <div className="albumTitle">{item.name}</div>
                                             <div>{item.release_date}</div>
                                         </div>
                                     )} 

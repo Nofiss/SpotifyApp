@@ -75,7 +75,6 @@ button {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border: 2px solid #349c99;
     padding: 1%;
 }
 
@@ -84,7 +83,6 @@ button {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid #ff177e;
     padding: 1%;
     font-weight: bold;
     color: #6e13ff;
@@ -161,4 +159,8 @@ a:hover {
     font-weight: bold;
     width: 500px;
     height: 400px;
+}
+
+.albumTitle {
+    text-align: center;
 }
